@@ -38,6 +38,57 @@ establishment of an absolute Tyranny over these States. To prove this, let Facts
 candid world.
 """
 ```
+```swift
+
+func noPuncOrNewLine(orig: String) -> String {
+    var str = ""
+    for char in orig {
+        if char.isPunctuation {
+            continue
+        } else if char == "\n" {
+            str += " "
+        } else {
+            str += String(char)
+        }
+}
+    return str
+}
+
+var updatedStr = noPuncOrNewLine(orig: declarationOfIndependence)
+var seperatedString = updatedStr.components(separatedBy: " ")
+var wordCount = 0
+var newString = ""
+var freqWord: [String: Int] = [:]
+var fiveWordString = [String]()
+
+for word in seperatedString{
+    if word.count > 5{
+        fiveWordString.append(word)
+        }
+}
+
+    for word in fiveWordString {
+        if let count = freqWord[word] {
+            freqWord[word] = count + 1
+        } else {
+            freqWord[word] = 1
+        }
+    }
+
+    for (key, value) in freqWord {
+        if value > wordCount {
+            wordCount = value
+            if freqWord[key] == wordCount{
+                newString = key
+            }
+            
+        }
+    }
+
+print(newString)
+
+```
+
 
 ## Question 2
 
