@@ -99,11 +99,10 @@ Make an array that contains all elements that appear more than twice in someRepe
 var someRepeatsAgain = [25,11,30,31,50,28,4,37,13,20,24,38,28,14,44,33,7,43,39,35,36,42,1,40,7,14,23,46,21,39,11,42,12,38,41,48,20,23,29,24,50,41,38,23,11,30,50,13,13,16,10,8,3,43,10,20,28,39,24,36,21,13,40,25,37,39,31,4,46,20,38,2,7,11,11,41,45,9,49,31,38,23,41,16,49,29,14,6,6,11,5,39,13,17,43,1,1,15,25]
 ```
 ```swift
-//need to fix
-
 var repeatNum: [Int: Int] = [:]
 var counter = 0
-var uniqueNum = 0
+var uniqueNum = [Int]()
+
 
 for value in someRepeatsAgain {
     if let count = repeatNum[value] {
@@ -114,15 +113,16 @@ for value in someRepeatsAgain {
 }
 
 for (key, value) in repeatNum{
-    if value > counter {
+    if value > 2 {
         counter = value
         if repeatNum[key] == counter {
-            uniqueNum = key
+            uniqueNum.append(key)
         }
     }
 }
 
 print(uniqueNum)
+
 
 
 ```
@@ -133,6 +133,22 @@ Identify if there are 3 integers in the following array that sum to 10. If so, p
 
 ```swift
 var tripleSumArr = [-20,-14, -8,-5,-3,-2,1,2,3,4,9,15,20,30]
+```
+```
+ATTEMPT -
+var tripleSumArr = [-20,-14,-8,-5,-3,-2,1,2,3,4,9,15,20,30]
+var sum = 0
+
+func tripleSum(input: [Int]) -> Int {
+    for (index, value) in input.enumerated(){
+        sum = value + tripleSumArr[1]
+    }
+    return sum
+}
+
+tripleSum(input: tripleSumArr)
+
+
 ```
 
 
@@ -171,11 +187,21 @@ let letterValues = [
 
 a. Sort the string below in descending order according the dictionary letterValues
 var codeString = "aldfjaekwjnfaekjnf"
+```
+var codeString = "aldfjaekwjnfaekjnf"
 
+print(codeString.sorted(by: {letterValues[String($0)] ?? 0 > letterValues[String($1)] ?? 0 }))
+```
 
 b. Sort the string below in ascending order according the dictionary letterValues
 var codeStringTwo = "znwemnrfewpiqn"
 
+```
+var codeStringTwo = "znwemnrfewpiqn"
+
+print(codeStringTwo.sorted(by: { (letterValues[String($0)] ?? 0 > letterValues[String($1)] ?? 0)}))
+
+```
 
 ## Question 4
 
@@ -258,7 +284,10 @@ struct BankAccount {
 ```
 
 a. Explain why the code above doesn't compile, then fix it.
+```
+This code does not compile because structs are value types therefore they're not able to have functions being performed within them, unless the keyword "mutating" is placed infront of the func keyword.  
 
+```
 b. Add a property called `deposits` of type `[Double]` that stores all of the deposits made to the bank account
 
 c. Add a property called `withdraws` of type `[Double]` that stores all of the withdraws made to the bank account
@@ -321,4 +350,8 @@ Make a function that takes in an array of strings and returns an array of string
 Input: ["Hello", "Alaska", "Dad", "Peace", "Power"]
 
 Output: ["Alaska", "Dad", "Power"]
+```
+```
+use sets
+
 ```
